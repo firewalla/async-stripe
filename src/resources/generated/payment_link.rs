@@ -455,12 +455,7 @@ impl<'a> ListPaymentLinks<'a> {
         }
     }
 }
-impl Paginable for ListPaymentLinks<'_> {
-    type O = PaymentLink;
-    fn set_last(&mut self, item: Self::O) {
-        self.starting_after = Some(item.id());
-    }
-}
+
 /// The parameters for `PaymentLink::update`.
 #[derive(Clone, Debug, Serialize, Default)]
 pub struct UpdatePaymentLink<'a> {
@@ -551,6 +546,12 @@ impl<'a> UpdatePaymentLink<'a> {
     }
 }
 
+impl Paginable for ListPaymentLinks<'_> {
+    type O = PaymentLink;
+    fn set_last(&mut self, item: Self::O) {
+        self.starting_after = Some(item.id());
+    }
+}
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreatePaymentLinkAfterCompletion {
     /// Configuration when `type=hosted_confirmation`.

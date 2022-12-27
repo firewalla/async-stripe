@@ -1202,6 +1202,7 @@ impl<'a> ListCheckoutSessions<'a> {
         }
     }
 }
+
 impl Paginable for ListCheckoutSessions<'_> {
     type O = CheckoutSession;
     fn set_last(&mut self, item: Self::O) {
@@ -2374,22 +2375,21 @@ pub struct CreateCheckoutSessionPaymentMethodOptionsCardInstallments {
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransfer {
-
     /// Configuration for eu_bank_transfer funding type.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub eu_bank_transfer: Option<CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
+#[serde(skip_serializing_if = "Option::is_none")]
+pub eu_bank_transfer: Option<CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
 
     /// List of address types that should be returned in the financial_addresses response.
     ///
     /// If not specified, all valid types will be returned.  Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub requested_address_types: Option<Vec<CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes>>,
+#[serde(skip_serializing_if = "Option::is_none")]
+pub requested_address_types: Option<Vec<CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes>>,
 
     /// The list of bank transfer types that this PaymentIntent is allowed to use for funding.
     ///
     /// Permitted values include: `us_bank_account`, `eu_bank_account`, `id_bank_account`, `gb_bank_account`, `jp_bank_account`, `mx_bank_account`, `eu_bank_transfer`, `gb_bank_transfer`, `id_bank_transfer`, `jp_bank_transfer`, `mx_bank_transfer`, or `us_bank_transfer`.
-    #[serde(rename = "type")]
-    pub type_: CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType,
+#[serde(rename = "type")]
+pub type_: CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType,
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
@@ -2939,11 +2939,11 @@ pub enum CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddress
 impl CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes {
     pub fn as_str(self) -> &'static str {
         match self {
-            CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Iban => "iban",
-            CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Sepa => "sepa",
-            CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::SortCode => "sort_code",
-            CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Spei => "spei",
-            CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Zengin => "zengin",
+CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Iban => "iban",
+CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Sepa => "sepa",
+CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::SortCode => "sort_code",
+CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Spei => "spei",
+CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypes::Zengin => "zengin",
         }
     }
 }
@@ -4088,8 +4088,8 @@ pub enum CreateCheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsAmountTa
 impl CreateCheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsAmountTaxDisplay {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsAmountTaxDisplay::ExcludeTax => "exclude_tax",
-            CreateCheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsAmountTaxDisplay::IncludeInclusiveTax => "include_inclusive_tax",
+CreateCheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsAmountTaxDisplay::ExcludeTax => "exclude_tax",
+CreateCheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsAmountTaxDisplay::IncludeInclusiveTax => "include_inclusive_tax",
         }
     }
 }
@@ -4270,8 +4270,8 @@ pub enum CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsDefault
 impl CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor::Invoice => "invoice",
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor::Subscription => "subscription",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor::Invoice => "invoice",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor::Subscription => "subscription",
         }
     }
 }
@@ -4309,9 +4309,9 @@ pub enum CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPayment
 impl CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule::Combined => "combined",
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule::Interval => "interval",
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule::Sporadic => "sporadic",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule::Combined => "combined",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule::Interval => "interval",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule::Sporadic => "sporadic",
         }
     }
 }
@@ -4350,8 +4350,8 @@ pub enum CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsTransac
 impl CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsTransactionType::Business => "business",
-            CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsTransactionType::Personal => "personal",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsTransactionType::Business => "business",
+CreateCheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsTransactionType::Personal => "personal",
         }
     }
 }
@@ -4763,11 +4763,11 @@ pub enum CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferReq
 impl CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => "sort_code",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => "zengin",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => "sort_code",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => "zengin",
         }
     }
 }
@@ -4808,10 +4808,10 @@ pub enum CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferTyp
 impl CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => "eu_bank_transfer",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => "gb_bank_transfer",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => "jp_bank_transfer",
-            CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => "mx_bank_transfer",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => "eu_bank_transfer",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => "gb_bank_transfer",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => "jp_bank_transfer",
+CreateCheckoutSessionPaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => "mx_bank_transfer",
         }
     }
 }
@@ -5314,10 +5314,10 @@ pub enum CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnecti
 impl CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::Balances => "balances",
-            CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::Ownership => "ownership",
-            CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::PaymentMethod => "payment_method",
-            CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::Transactions => "transactions",
+CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::Balances => "balances",
+CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::Ownership => "ownership",
+CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::PaymentMethod => "payment_method",
+CreateCheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions::Transactions => "transactions",
         }
     }
 }
@@ -6336,11 +6336,11 @@ pub enum CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMax
 impl CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::BusinessDay => "business_day",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Day => "day",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Hour => "hour",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Month => "month",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Week => "week",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::BusinessDay => "business_day",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Day => "day",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Hour => "hour",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Month => "month",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMaximumUnit::Week => "week",
         }
     }
 }
@@ -6382,11 +6382,11 @@ pub enum CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMin
 impl CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::BusinessDay => "business_day",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Day => "day",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Hour => "hour",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Month => "month",
-            CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Week => "week",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::BusinessDay => "business_day",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Day => "day",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Hour => "hour",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Month => "month",
+CreateCheckoutSessionShippingOptionsShippingRateDataDeliveryEstimateMinimumUnit::Week => "week",
         }
     }
 }
@@ -6426,9 +6426,9 @@ pub enum CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrency
 impl CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior {
     pub fn as_str(self) -> &'static str {
         match self {
-            CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior::Exclusive => "exclusive",
-            CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior::Inclusive => "inclusive",
-            CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior::Unspecified => "unspecified",
+CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior::Exclusive => "exclusive",
+CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior::Inclusive => "inclusive",
+CreateCheckoutSessionShippingOptionsShippingRateDataFixedAmountCurrencyOptionsTaxBehavior::Unspecified => "unspecified",
         }
     }
 }
