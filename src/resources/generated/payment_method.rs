@@ -2215,6 +2215,7 @@ pub enum WalletDetailsType {
     Masterpass,
     SamsungPay,
     VisaCheckout,
+    Link,
 }
 
 impl WalletDetailsType {
@@ -2226,6 +2227,7 @@ impl WalletDetailsType {
             WalletDetailsType::Masterpass => "masterpass",
             WalletDetailsType::SamsungPay => "samsung_pay",
             WalletDetailsType::VisaCheckout => "visa_checkout",
+            WalletDetailsType::Link => "link",
         }
     }
 }
