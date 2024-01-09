@@ -32,7 +32,7 @@ pub struct RetrieveUpcomingInvoice {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription: Option<SubscriptionId>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subscription_items: Option<SubscriptionItemFilter>,
+    pub subscription_items: Option<Vec<SubscriptionItemFilter>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_prorate: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
