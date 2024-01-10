@@ -1,5 +1,6 @@
 use serde::Serialize;
 
+use crate::PriceId;
 use crate::client::{Client, Response};
 use crate::ids::{CouponId, CustomerId, InvoiceId, PlanId, SubscriptionId, SubscriptionItemId};
 use crate::params::{Metadata, Timestamp};
@@ -26,13 +27,13 @@ impl Invoice {
 
 #[derive(Clone, Debug, Serialize)]
 pub struct RetrieveUpcomingInvoice {
-    pub customer: CustomerId, // this is a required param
+    pub customer: Option<CustomerId>, // this is a required param
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coupon: Option<CouponId>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription: Option<SubscriptionId>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subscription_items: Option<Vec<SubscriptionItemFilter>>,
+    pub subscription_items: Option<Vec<UpcomingSubscriptionItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_prorate: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -46,7 +47,7 @@ pub struct RetrieveUpcomingInvoice {
 impl RetrieveUpcomingInvoice {
     pub fn new(customer: CustomerId) -> Self {
         RetrieveUpcomingInvoice {
-            customer,
+            customer: None,
             coupon: None,
             subscription: None,
             subscription_items: None,
@@ -68,6 +69,21 @@ pub struct SubscriptionItemFilter {
     pub metadata: Option<Metadata>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub plan: Option<PlanId>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub quantity: Option<u64>,
+}
+
+
+#[derive(Clone, Debug, Serialize)]
+pub struct UpcomingSubscriptionItem {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub deleted: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub metadata: Option<Metadata>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub price: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub quantity: Option<u64>,
 }
