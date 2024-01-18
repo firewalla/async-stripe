@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-use crate::PriceId;
+use crate::{PriceId, InvoiceLineItem, List};
 use crate::client::{Client, Response};
 use crate::ids::{CouponId, CustomerId, InvoiceId, PlanId, SubscriptionId, SubscriptionItemId};
 use crate::params::{Metadata, Timestamp};
@@ -17,6 +17,9 @@ impl Invoice {
         client.get_query("/invoices/upcoming", &params)
     }
 
+    pub fn upcoming_lines(client: &Client, params: RetrieveUpcomingInvoiceLines) -> Response<List<InvoiceLineItem>> {
+        client.get_query("/invoices/upcoming/lines", &params)
+    }
     /// Pays an invoice.
     ///
     /// For more details see <https://stripe.com/docs/api#pay_invoice.>.
@@ -34,6 +37,28 @@ pub struct RetrieveUpcomingInvoice {
     pub subscription: Option<SubscriptionId>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_items: Option<Vec<UpcomingSubscriptionItem>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subscription_prorate: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subscription_proration_date: Option<Timestamp>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subscription_tax_percent: Option<f64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subscription_trial_end: Option<Timestamp>,
+}
+
+
+#[derive(Clone, Debug, Serialize)]
+pub struct RetrieveUpcomingInvoiceLines {
+    pub customer: Option<CustomerId>, // this is a required param
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub coupon: Option<CouponId>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subscription: Option<SubscriptionId>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subscription_items: Option<Vec<UpcomingSubscriptionItem>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub limit: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_prorate: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
