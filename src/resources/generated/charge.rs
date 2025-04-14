@@ -1716,6 +1716,7 @@ pub enum PaymentMethodDetailsCardWalletType {
     Masterpass,
     SamsungPay,
     VisaCheckout,
+    Link,
 }
 
 impl PaymentMethodDetailsCardWalletType {
@@ -1727,6 +1728,7 @@ impl PaymentMethodDetailsCardWalletType {
             PaymentMethodDetailsCardWalletType::Masterpass => "masterpass",
             PaymentMethodDetailsCardWalletType::SamsungPay => "samsung_pay",
             PaymentMethodDetailsCardWalletType::VisaCheckout => "visa_checkout",
+            PaymentMethodDetailsCardWalletType::Link => "link",
         }
     }
 }
